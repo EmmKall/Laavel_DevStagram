@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\logoutController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ImagenController;
+use App\Http\Controllers\logoutController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,7 @@ Route::post( '/login' , [ LoginController::class, 'store' ])->name('login');
 Route::post( '/logout' , [ logoutController::class, 'store' ])->name('logout');
 
 Route::get( '/{user:username}' , [ PostController::class, 'index' ])->name('post.index');
+Route::get( '/post/create' , [ PostController::class, 'create' ])->name('post.create');
+
+Route::post( '/imagenes', [ ImagenController::class, 'store' ] )->name('imagen.store');
 
