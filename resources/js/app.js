@@ -11,6 +11,21 @@ if(document.getElementById("dropzone"))
         dictRemoveFile: "Borrar archivo",
         maxFiles: 1,
         uploadMultiple: false,
+
+        init: function(){
+            if( document.querySelector('[name="imagen"]').value.trim() !== '' )
+            {
+                const imgCargada = {};
+                imgCargada.imgSize = 1234;
+                imgCargada.imgName = document.querySelector('[name="imagen"]').value;
+
+                this.options.addedfile.call( this, imgCargada );
+                this.options.thumbnail.call( this, imgCargada, `/uploads/${ imgCargada.imgName }` );
+
+                imgCargada.previewElement.classList.add( 'dz-success', 'dz-complete' );
+
+            }
+        }
     });
 
     /* Enventos en dropzone */
@@ -19,7 +34,8 @@ if(document.getElementById("dropzone"))
     });
 
     dropzone.on( 'success', function( file, response ){
-        console.log( response );
+        /* console.log( response ); */
+        document.querySelector('[name="imagen"]').value = response.imagen;
     });
 
     dropzone.on( 'error', function( file, message ){
@@ -30,6 +46,9 @@ if(document.getElementById("dropzone"))
         console.log( 'Archivo eliminado' );
     });
 
+    dropzone.on('removedfile', function(){
+        document.querySelector('[name="imagen"]').value = '';
+    });
     
 
 }
