@@ -24,4 +24,12 @@ class Post extends Model
     {
         return $this->belongsTo( User::class ); //Si solo queremos ciertos datos, los agregamos dentro de corchetes ->select( [ campo1, campo2 ] );
     }
+    /**
+     * Function to relation HashMany
+     * Many has many
+     */
+    public function comentarios()
+    {
+        return $this->hasMany( Comentario::class );
+    }
 }
