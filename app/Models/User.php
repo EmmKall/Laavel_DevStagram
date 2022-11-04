@@ -51,4 +51,12 @@ class User extends Authenticatable
     {
         return $this->hasMany( Post::class );  // Parameter 2 name of column to relation
     }
+    /**
+     * Function one to many
+     * one user have many likes
+     */
+    public function likes()
+    {
+        return $this->hasMany( Like::class );
+    }
 }

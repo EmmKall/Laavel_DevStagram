@@ -7,6 +7,7 @@ use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\logoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,5 @@ Route::post('/{user:username}/post/{post}', [ ComentarioController::class, 'stor
 
 Route::post( '/imagenes', [ ImagenController::class, 'store' ] )->name('imagen.store');
 
+Route::post( '/post/{post}/likes', [ LikeController::class, 'store' ] )->name( 'posts.likes.store' );
+Route::delete( '/post/{post}/likes', [ LikeController::class, 'destroy' ] )->name( 'posts.likes.destroy' );
