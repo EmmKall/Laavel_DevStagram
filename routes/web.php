@@ -8,6 +8,7 @@ use App\Http\Controllers\logoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\PerfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,6 @@ Route::post( '/imagenes', [ ImagenController::class, 'store' ] )->name('imagen.s
 
 Route::post( '/post/{post}/likes', [ LikeController::class, 'store' ] )->name( 'posts.likes.store' );
 Route::delete( '/post/{post}/likes', [ LikeController::class, 'destroy' ] )->name( 'posts.likes.destroy' );
+
+Route::get( '{user:username}/editar-perfil', [ PerfilController::class, 'index' ] )->name( 'perfil.index' );
+Route::post( '{user:username}/editar-perfil', [ PerfilController::class, 'store' ] )->name( 'perfil.store' );
