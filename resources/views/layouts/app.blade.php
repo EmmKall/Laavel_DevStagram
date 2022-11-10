@@ -33,6 +33,7 @@
                     @endguest
                 </nav>
             </div>
+            @livewireStyles()
         </header>
         <main class="container mx-auto mt-10">
             <h2 class="font-black text-center text-3xl mb-10">@yield('titulo')</h2>
@@ -42,5 +43,6 @@
             DevStagram - Todos los derechos resevados {{ now()->year }}
         </footer>
         @vite('resources/js/app.js')
+        @livewireScripts()
     </body>
 </html>
